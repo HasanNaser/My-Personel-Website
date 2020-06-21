@@ -41,3 +41,5 @@ stopbtn.addEventListener("click", function () {
 function detectMob() {
   return window.innerWidth <= 1000 && window.innerHeight <= 600;
 }
+
+document.querySelector("#date_").innerHTML =(new Date()).getFullYear();

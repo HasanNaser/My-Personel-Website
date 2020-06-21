@@ -82,3 +82,16 @@ a{
     color: black;
     font-weight: bolder;
   }
+
+  footer{
+    z-index: 1000;
+    text-align: center;
+    position: fixed;
+    top: 96%;
+    left: 47%;
+  }
+  @media  (max-width:1000px){
+    footer{ 
+        left: 29%  !important;
+      }
+  }
