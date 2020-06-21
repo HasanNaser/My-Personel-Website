@@ -88,6 +88,8 @@ a{
     text-align: center;
     position: fixed;
     top: 96%;
+      
+      
     left: 47%;
   }
   @media  (max-width:1000px){
