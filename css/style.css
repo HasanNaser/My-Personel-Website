@@ -92,6 +92,7 @@ a{
   }
   @media  (max-width:1000px){
     footer{ 
-        left: 29%  !important;
+        left: 15%  !important;
+        top: 90%!important; 
       }
   }
