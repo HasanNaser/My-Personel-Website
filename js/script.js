@@ -1,3 +1,5 @@
+const BODY = document.querySelector("body");
+
 var randomWidth = () => {
   let x = 0;
   if (detectMob()) {
@@ -25,21 +27,34 @@ var interval = setInterval(() => {
 }, 2000);
 
 let stopbtn = document.querySelector(".btn-stop");
+
 stopbtn.addEventListener("mouseover", function () {
-  this.style.left = getRndInteger(0, 99) + "%";
-  this.style.top = getRndInteger(0, 99) + "%";
+  this.style.left = getRndInteger(-10, 99) + "%";
+  this.style.top = getRndInteger(-10, 99) + "%";
+  BODY.style.background = getRandomColor();
   this.innerHTML = "Stop it :)";
-  this.style.bottom = "auto";
-  this.style.backgroundColor = "#8c8be1e3";
+  this.style.bottom = "auto"; 
 });
 
 stopbtn.addEventListener("click", function () {
   clearInterval(interval);
+  BODY.style.background = "white"; 
   this.style.opacity = "0";
 });
 
 function detectMob() {
-  return window.innerWidth <= 1000 && window.innerHeight <= 600;
+  return window.innerWidth <= 1000 && window.innerHeight <= 1000;
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 document.querySelector("#date_").innerHTML =(new Date()).getFullYear();
+// document.querySelector(".footer").style.marginTop = (window.innerHeight/2) - 250 +"px";
+// console.log(window.innerHeight)

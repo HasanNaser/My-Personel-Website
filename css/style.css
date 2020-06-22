@@ -8,15 +8,13 @@ a{
     text-decoration: none;
 }
 
-.container-section { 
-     position: absolute; 
+.container-section {  
     height: 100%;
     width: 100%; 
 }
 .container-box::after {
     /* Set content to be an attribute on the element */
-    content: attr(data-value);
-    content: attr(data-value);
+    content: attr(data-value); 
     position: relative;
     left: 50%;
     top: 15px;
@@ -26,7 +24,7 @@ a{
 .btn-stop{
     transition: all .5s;
     border: none;
-    background: #58585847;
+    background: rgb(88, 88, 88);
     color: white;
     padding: 6px;
     border-radius: 4px;
@@ -41,6 +39,7 @@ a{
     -moz-box-shadow: 6px 6px 22px -1px rgba(128, 128, 128, 0.81);
     box-shadow: 6px 6px 22px -1px rgba(128, 128, 128, 0.81);
     width: 90%;
+    background: #ffffffc7;
     transition: all 1s;
     margin: 14% auto;
     padding: 30px;  
@@ -83,16 +82,16 @@ a{
     font-weight: bolder;
   }
 
-  footer{
+  .footer{
     z-index: 1000;
-    text-align: center;
+    text-align: center; 
     position: fixed;
-    top: 96%;  
-    left: 47%;
+    left: 0;
+    bottom: 0;
+    width: 100%;   
+    text-align: center;
+    margin-bottom: 9px;
   }
   @media  (max-width:1000px){
-    footer{ 
-        left: 15%  !important;
-        top: 90%!important; 
-      }
+     
   }
