@@ -22,17 +22,20 @@ a{
 }
 
 .btn-stop{
+    font-weight: bolder;
     transition: all .5s;
     border: none;
     background: rgb(88, 88, 88);
     color: white;
     padding: 6px;
-    border-radius: 4px;
-    position: absolute;  
-    bottom: 2%;
+    /* border-radius: 4px; */
+    position: absolute;
+    top: 2%;
     font-family: inherit;
     font-size: inherit;
-    left: 0;
+    right: 9px;
+    cursor: pointer;
+    z-index: 1000;
 }
 .container-box{
     -webkit-box-shadow: 6px 6px 22px -1px rgba(128, 128, 128, 0.81);
@@ -93,5 +96,59 @@ a{
     margin-bottom: 9px;
   }
   @media  (max-width:1000px){
-     
+      #meInTheWorld{
+          position: absolute;
+          bottom: -94px !important;
+          left: 4px;
+      }
   }
+
+
+#meInTheWorld{
+    position: absolute;bottom: -17px;left: 4px;
+}
+#meInTheWorld .years{
+    font-size: xx-large;
+    font-weight: 800;
+    width: fit-content;
+    color: white;
+    background: black;
+    padding: 0px 4px;
+}
+#meInTheWorld .months{
+    /*font-size: x-large;*/
+    /*font-weight: 600;*/
+    /*width: fit-content;*/
+    /*color: white;*/
+    /*background: black;*/
+    /*padding: 0px 4px;*/
+    /*display: block;*/
+    font-size: x-large;
+    font-weight: 600;
+}
+#meInTheWorld .days{
+    font-size: x-large;
+    font-weight: 600;
+}
+#meInTheWorld .hours{
+    font-size: x-large;
+    font-weight: 600;
+}
+#meInTheWorld .minutes{
+    font-size: x-large;
+    font-weight: 600;
+}
+
+#meInTheWorld .seconds{
+    font-size: 14px;
+    font-weight: 600;
+    background: #ffbfbf;
+    padding: 0 5px;
+}
+#meInTheWorld .small_strings{
+    background: white;font-weight: 800;margin-left: 2px;bottom: 1px;font-size: 12px;
+}
+
+.block-relative-fitcontet{
+    display: block;width: fit-content; position: relative;
+}
