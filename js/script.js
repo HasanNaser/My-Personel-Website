@@ -1,5 +1,12 @@
 const BODY = document.querySelector("body");
-
+let AGE = 0;
+let NABIZ = 2000;
+var windowSize = {
+  w: window.outerWidth,
+  h: window.outerHeight,
+  iw: window.innerWidth,
+  ih: window.innerHeight
+};
 var randomWidth = () => {
   let x = 0;
   if (detectMob()) {
@@ -7,7 +14,12 @@ var randomWidth = () => {
     document.querySelector(".container-box").style.width = "80%";
     document.querySelector(".container-box").setAttribute("data-value",  " "); 
       document.querySelector(".btn-stop").style.opacity = "0";
-    clearInterval(interval);
+
+    x = getRndInteger(5, AGE);
+    document.querySelector(".container-box").style.paddingBottom = x/2+"%";
+    document.querySelector(".container-box").setAttribute("data-value",  x+"%");
+    // clearInterval(interval);
+    NABIZ = 1000;
   } else {
     x = getRndInteger(30, 70); 
     document.querySelector(".container-box").style.width = x + "%";
@@ -24,17 +36,27 @@ randomWidth();
 
 var interval = setInterval(() => {
   randomWidth();
-}, 2000);
+}, NABIZ);
 
 let stopbtn = document.querySelector(".btn-stop");
 
 stopbtn.addEventListener("mouseover", function () {
   this.style.left = getRndInteger(-10, 99) + "%";
   this.style.top = getRndInteger(-10, 99) + "%";
-  BODY.style.background = getRandomColor();
+  BODY.style.background = getRandomColor(98);
   this.innerHTML = "Stop it :)";
   this.style.bottom = "auto";
-  this.style.background = getRandomColor();
+  this.style.background = getRandomColor(50);
+  let thisthis = this;
+
+  let olsunmu = getRndInteger(190,200);
+  if(olsunmu == 195 || olsunmu == 194){
+    setTimeout(function (){
+      thisthis.style.left = getRndInteger(-10, 99) + "%";
+      thisthis.style.top = getRndInteger(-10, 99) + "%";
+    },400)
+  }
+
 });
 
 stopbtn.addEventListener("click", function () {
@@ -47,13 +69,20 @@ function detectMob() {
   return window.innerWidth <= 1000 && window.innerHeight <= 1000;
 }
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+function getRandomColor(brightness) {
+  function randomChannel(brightness){
+    var r = 255-brightness;
+    var n = 0|((Math.random() * r) + brightness);
+    var s = n.toString(16);
+    return (s.length==1) ? '0'+s : s;
   }
-  return color;
+  var randomColor1 = '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness),
+      randomColor2 = '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness);
+  if(brightness === 50){
+    return 'radial-gradient(at top left, '+randomColor1+', '+randomColor2+')'
+  }else
+    return randomColor1;
+
 }
 
 document.querySelector("#date_").innerHTML =(new Date()).getFullYear();
@@ -77,7 +106,8 @@ var calculateAge = ()=>{
   let years,months,days, hours, minutes, seconds;
   setInterval(function(){
     var current_date = new Date();
-    age_year.innerHTML = pad(current_date.getYear() - birth_date.getYear());
+    AGE = current_date.getYear() - birth_date.getYear();
+    age_year.innerHTML = pad(AGE);
     age_months.innerHTML = pad(current_date.getMonth() - birth_date.getMonth());
     age_days.innerHTML = pad(current_date.getDate() - birth_date.getDate());
     age_hours.innerHTML = pad(current_date.getHours() - birth_date.getHours());
@@ -88,3 +118,24 @@ var calculateAge = ()=>{
 }
 
 calculateAge();
+
+
+//init object to store window properties
+
+window.addEventListener("resize", function() {
+  if (window.outerWidth !== windowSize.w || window.outerHeight !== windowSize.h) {
+    windowSize.w = window.outerWidth; // update object with current window properties
+    windowSize.h = window.outerHeight;
+    windowSize.iw = window.innerWidth;
+    windowSize.ih = window.innerHeight;
+    BODY.style.background = getRandomColor(98);
+
+  }
+  //if the window doesn't resize but the content inside does by + or - 5%
+  else if (window.innerWidth + window.innerWidth * .05 < windowSize.iw ||
+      window.innerWidth - window.innerWidth * .05 > windowSize.iw) {
+    windowSize.iw = window.innerWidth;
+    BODY.style.background = getRandomColor(98);
+
+  }
+}, false)
