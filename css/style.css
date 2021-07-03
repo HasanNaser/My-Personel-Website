@@ -29,7 +29,7 @@ a{
 
 .btn-stop{
     font-weight: bolder;
-    transition: all .5s;
+    transition: all .4s;
     border: none;
     background: rgb(88, 88, 88);
     color: white;

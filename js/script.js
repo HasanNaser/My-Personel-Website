@@ -12,7 +12,7 @@ var randomWidth = () => {
   if (detectMob()) {
     //    x = getRndInteger(65,85);
     document.querySelector(".container-box").style.width = "80%";
-    document.querySelector(".container-box").setAttribute("data-value",  " "); 
+    document.querySelector(".container-box").setAttribute("data-value",  " ");
       document.querySelector(".btn-stop").style.opacity = "0";
 
     x = getRndInteger(5, AGE);
@@ -21,9 +21,9 @@ var randomWidth = () => {
     // clearInterval(interval);
     NABIZ = 1000;
   } else {
-    x = getRndInteger(30, 70); 
+    x = getRndInteger(30, 70);
     document.querySelector(".container-box").style.width = x + "%";
-    document.querySelector(".container-box").setAttribute("data-value", x+ "%"); 
+    document.querySelector(".container-box").setAttribute("data-value", x+ "%");
 
   }
 };
@@ -61,7 +61,7 @@ stopbtn.addEventListener("mouseover", function () {
 
 stopbtn.addEventListener("click", function () {
   clearInterval(interval);
-  BODY.style.background = "white"; 
+  BODY.style.background = "white";
   this.style.opacity = "0";
 });
 
@@ -79,7 +79,8 @@ function getRandomColor(brightness) {
   var randomColor1 = '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness),
       randomColor2 = '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness);
   if(brightness === 50){
-    return 'radial-gradient(at top left, '+randomColor1+', '+randomColor2+')'
+    return randomColor2;
+    // return 'radial-gradient(at top left, '+randomColor1+', '+randomColor2+')'
   }else
     return randomColor1;
 
@@ -108,11 +109,11 @@ var calculateAge = ()=>{
     var current_date = new Date();
     AGE = current_date.getYear() - birth_date.getYear();
     age_year.innerHTML = pad(AGE);
-    age_months.innerHTML = pad(current_date.getMonth() - birth_date.getMonth());
-    age_days.innerHTML = pad(current_date.getDate() - birth_date.getDate());
-    age_hours.innerHTML = pad(current_date.getHours() - birth_date.getHours());
-    age_minutes.innerHTML = pad(current_date.getMinutes() - birth_date.getMinutes());
-    age_seconds.innerHTML = pad(current_date.getSeconds() - birth_date.getSeconds());
+    age_months.innerHTML = pad(Math.abs(current_date.getMonth() - birth_date.getMonth()));
+    age_days.innerHTML = pad(Math.abs(current_date.getDate() - birth_date.getDate()));
+    age_hours.innerHTML = pad(Math.abs(current_date.getHours() - birth_date.getHours()));
+    age_minutes.innerHTML = pad(Math.abs(current_date.getMinutes() - birth_date.getMinutes()));
+    age_seconds.innerHTML = pad(Math.abs(current_date.getSeconds() - birth_date.getSeconds()));
   },1000);
 
 }
@@ -121,7 +122,6 @@ calculateAge();
 
 
 //init object to store window properties
-
 window.addEventListener("resize", function() {
   if (window.outerWidth !== windowSize.w || window.outerHeight !== windowSize.h) {
     windowSize.w = window.outerWidth; // update object with current window properties
@@ -139,3 +139,4 @@ window.addEventListener("resize", function() {
 
   }
 }, false)
+
